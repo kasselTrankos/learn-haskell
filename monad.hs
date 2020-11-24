@@ -18,9 +18,9 @@ database = [(1, "juan"), (2, "amuel")]
 
 mapToMaybe :: (String -> String) ->
               (Maybe String -> Maybe String)
-mapToMaybe function Nothing = Nothing
-mapToMaybe function (Just string) =
-    Just (function string)
+mapToMaybe func Nothing = Nothing
+mapToMaybe func (Just string) =
+    Just (func string)
 
 greetUser :: Integer -> Maybe String
 greetUser record =
@@ -28,3 +28,8 @@ greetUser record =
 getit :: Integer -> Maybe String
 getit record =
     (lookup record database)
+
+
+mapToEither :: ( a -> b)-> Either left a -> Either left b
+mapToEither func (Left a)= Left a
+mapToEither func (Right b) = Right (func b)
