@@ -27,6 +27,21 @@ myMap func list =
 allLowerCase :: String -> String
 allLowerCase word = myMap toLower word
 
+myAll :: (a -> Bool) -> [a] -> Bool
+myAll _ [] = True
+myAll pred (x:xs) = 
+    case (pred x) of
+        False -> False
+        True -> myAll pred xs
+
+rejectNonAlphabetic :: String -> Maybe String
+rejectNonAlphabetic string =
+    case (myAll isAlpha string) of
+        False -> Nothing
+        True -> Just string
+
+    
+
 main :: IO()
 main =
     do
