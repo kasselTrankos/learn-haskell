@@ -1,5 +1,7 @@
 
+{-# LANGUAGE TypeApplications #-}
 import Data.Time
+import Data.Int (Int8)
 
 toString :: Integer -> String
 toString int =
@@ -18,6 +20,9 @@ main =
         putStrLn(show(e))
         putStrLn(toString(x))
         putStrLn(timeNow now)
+        putStrLn(show [3 .. 9])
+        putStrLn (show (minBound @Int8))
+        
 
 timeNow :: ZonedTime -> String
 timeNow now =
